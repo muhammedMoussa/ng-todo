@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TodoDataService } from 'src/app/shared/services/todo-data.service';
 import { Task } from 'src/app/models';
+import { TodoFormComponent } from '../../components/todo-form/todo-form.component';
 
 @Component({
   selector: 'app-todo-shell',
@@ -9,6 +10,8 @@ import { Task } from 'src/app/models';
   styleUrls: ['./todo-shell.component.css']
 })
 export class TodoShellComponent implements OnInit {
+  @ViewChild('formRef', { static: false }) formRef: TodoFormComponent;
+
   tasks$: Observable<Task[]>;
   task = '';
 
@@ -28,7 +31,7 @@ export class TodoShellComponent implements OnInit {
       done: false
     });
 
-    this.task = '';
+    this.resetInput();
   }
 
   toggletTaskStatus = (task: Task): void => {
@@ -39,6 +42,11 @@ export class TodoShellComponent implements OnInit {
   }
 
   removeTask = (id: any): void => this.todoDataService.removeTask(id);
+
+  resetInput = (): void => {
+    this.task = '';
+    this.formRef.inputRef.nativeElement.value = '';
+  }
 
   constructor(
     private todoDataService: TodoDataService

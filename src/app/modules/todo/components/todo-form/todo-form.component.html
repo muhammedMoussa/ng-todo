@@ -1,1 +1,16 @@
-<p>todo-form works!</p>
+<div class="row" style="margin: 10px 0;">
+    <div class="col s12 z-depth-4">
+        <div class="input-field">
+            <input
+                #inputRef
+                [(value)]="task"
+                id="task"
+                type="text"
+                required
+                (keyup.enter)="OnEnter.emit($event)"
+            >
+            <label for="task">Task </label>
+            <span class="helper-text" data-success="Hit Enter To Add">Hit Enter To Add</span>
+        </div>
+    </div>
+</div>

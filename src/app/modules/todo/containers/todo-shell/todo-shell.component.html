@@ -1,4 +1,8 @@
-<input [(value)]="task" id="task" type="text" required (keyup.enter)="addTask($event)">
+<app-todo-form
+    #formRef
+    [task]="task"
+    (OnEnter)="addTask($event)"
+></app-todo-form>
 <div *ngFor="let task of tasks$ | async">
     {{ task.task }}
     {{ task.done }}
