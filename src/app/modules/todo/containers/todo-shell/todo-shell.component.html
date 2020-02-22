@@ -1,1 +1,7 @@
-<p>todo-shell works!</p>
+<input [(value)]="task" id="task" type="text" required (keyup.enter)="addTask($event)">
+<div *ngFor="let task of tasks$ | async">
+    {{ task.task }}
+    {{ task.done }}
+    <button (click)="removeTask(task.id)">Remove</button><br>
+    <button (click)="toggletTaskStatus(task)">Done</button><br>
+</div>
