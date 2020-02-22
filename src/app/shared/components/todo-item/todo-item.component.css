@@ -1,0 +1,7 @@
+.task {
+    font-size: 1.6em;
+    padding: 10px;
+}
+
+.todo-icons { float: right; }
+.todo-icons > a { margin: 0 5px; }
