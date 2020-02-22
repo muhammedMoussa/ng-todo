@@ -3,9 +3,9 @@
     [task]="task"
     (OnEnter)="addTask($event)"
 ></app-todo-form>
-<div *ngFor="let task of tasks$ | async">
-    {{ task.task }}
-    {{ task.done }}
-    <button (click)="removeTask(task.id)">Remove</button><br>
-    <button (click)="toggletTaskStatus(task)">Done</button><br>
-</div>
+
+<app-todo-list
+    [tasks$]="tasks$"
+    (OnToggleTask)="toggletTaskStatus($event)"
+    (OnRemoveTask)="removeTask($event)"
+></app-todo-list>

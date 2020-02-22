@@ -7,8 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild }
 })
 export class TodoFormComponent {
   @ViewChild('inputRef', { static: false }) inputRef: ElementRef;
-
-
   @Input() task: string;
   @Output() OnEnter: EventEmitter<any> = new EventEmitter<any>();
 }

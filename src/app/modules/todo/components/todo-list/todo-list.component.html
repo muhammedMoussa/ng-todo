@@ -1,1 +1,16 @@
-<p>todo-list works!</p>
+<ul
+    class="collection with-header z-depth-5"
+    *ngIf="(tasks$ | async)?.length > 0; else noTasks"
+>
+    <app-todo-item
+        *ngFor="let task of tasks$ | async"
+        [task]="task"
+        (OnToggleTask)="OnToggleTask.emit($event)"
+        (OnRemoveTask)="OnRemoveTask.emit($event)"
+        [class.completed]="task.done"
+    ></app-todo-item>
+</ul>
+
+<ng-template #noTasks>
+    You have nothing todo!
+</ng-template>
